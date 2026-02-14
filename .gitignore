@@ -1,2 +1,6 @@
 # Mac OS
 .DS_Store
+
+# Build
+dev/
+idat/
