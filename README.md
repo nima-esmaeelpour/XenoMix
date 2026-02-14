@@ -28,7 +28,7 @@ library(XenoMix)
 idat_path <- "path/to/idat/files"
 
 # Run the contamination estimate
-xeno_report <- runXeno(idat_path)
+xeno_report <- run_xeno(idat_path)
 
 # View the results (predicted mouse fraction)
 print(xeno_report)
