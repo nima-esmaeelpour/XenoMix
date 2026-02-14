@@ -1,11 +1,10 @@
 Package: XenoMix
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Cross-Species Contamination Detection and Quantification for Infinium Methylation Arrays
+Version: 0.1.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Nima", "Esmaeelpour", , "nima.esmaeelpour@dkfz.de", role = c("aut", "cre"))
+Description: Quantifies murine DNA contamination in human Infinium Methylation EPIC arrays by exploiting species-specific signal discordance. Leveraging Infinium Type I probe biochemistry, the algorithm identifies inter-species informative probes where single-base extension color channels differ between human and mouse genomes even after bisulfite conversion. While the technical capacity for cross-species detection was initially noted by Zhou et al. (2022) for human DNA on mouse-specific arrays, this package provides the first formalized framework and background-correction logic to accurately estimate the reciprocal case of host contamination in human-targeted xenograft samples. Validation against in-house ground-truth mixtures and 227 publicly available datasets from the Gene Expression Omnibus demonstrates high estimation accuracy ($R^2 = 0.991$), providing a robust quality-control metric for preclinical xenograft epigenomics.
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
