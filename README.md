@@ -18,7 +18,7 @@ The technical capacity for cross-species detection using Infinium Type I probes 
 You can install the development version of XenoMix from GitHub with:
 ```R
 # install.packages("devtools")
-devtools::install_github("biotomed/XenoMix")
+devtools::install_gitlab("b370/scepigen/XenoMix", host="git.dkfz.de")
 ```
 
 # Quick Start
