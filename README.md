@@ -15,6 +15,15 @@ The technical capacity for cross-species detection using Infinium Type I probes 
 - Validated on Real-World Data: Performance confirmed across 227 publicly available samples from the Gene Expression Omnibus (GEO).
 
 # Installation
+
+## Requirements
+
+XenoMix requires the [sesame](https://www.bioconductor.org/packages/release/bioc/html/sesame.html) R package, which can be installed from Bioconductor:
+```R
+# install.packages("BiocManager)
+BiocManager::install("sesame")
+```
+
 You can install the development version of XenoMix from GitHub with:
 ```R
 # install.packages("devtools")
