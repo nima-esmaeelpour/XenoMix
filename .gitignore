@@ -4,3 +4,7 @@
 # Build
 dev/
 idat/
+
+# Test
+out/
+test_data_mouse/
