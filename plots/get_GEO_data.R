@@ -12,7 +12,12 @@ get_geo_data <- function(geo, platform_num) {
     dir.create(geo_dir, recursive = TRUE, showWarnings = FALSE)
 
     # Download GSE metadata
-    gse <- GEOquery::getGEO(geo, destdir = geo_dir)
+    gse <- GEOquery::getGEO(
+      geo,
+      destdir = geo_dir,
+      GSEMatrix = TRUE,
+      getGPL = FALSE
+    )
     gse_obj <- gse[[platform_num]]
     sample_annotation <- Biobase::pData(gse_obj)
 

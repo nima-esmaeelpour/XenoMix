@@ -1,3 +1,6 @@
 ^LICENSE\.md$
 ^dev$
 ^plots$
+^idat$
+^test_data_mouse$
+^out$

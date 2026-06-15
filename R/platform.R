@@ -1,3 +1,11 @@
+# ---- PLATFORM DETECTION ----
+
+#' Resolve platform and return manifest and interspecies probes
+#'
+#' @param df Raw probe-level data frame
+#' @param sample_name Character scalar identifying the sample
+#' @return List with manifest and interspecies_probes
+#' @noRd
 resolve_platform <- function(df, sample_name) {
   n <- nrow(df)
 

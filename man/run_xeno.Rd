@@ -6,6 +6,15 @@
 \usage{
 run_xeno(idat_path, n_cores = 1)
 }
+\arguments{
+\item{idat_path}{Character. Path to the directory containing .idat files.}
+
+\item{n_cores}{Integer. Number of cores for parallel processing (default is 1).}
+}
+\value{
+A data frame containing sample names and calculated mouse fractions.
+}
 \description{
-Run Xeno Mouse Fraction Analysis
+Processes IDAT files from a specified directory to calculate xenograft
+(mouse) fraction. Automatically detects EPIC v1 vs v2 arrays.
 }

@@ -10,7 +10,7 @@ The algorithm identifies 15 inter-species informative probes from the Infinium T
 The technical capacity for cross-species detection using Infinium Type I probes was first described by [Zhou et al. (2022)](https://doi.org/10.1016/j.xgen.2022.100144) for human DNA on mouse-specific arrays. XenoMix establishes the first formalized framework and background-correction logic to address the reciprocal case of murine contamination on human targeted arrays.
 
 ## Key Features
-- Accurate Quantification: Achieved a validation $R^2 = 0.991$ on ground-truth human-mouse DNA mixtures.
+- Accurate Quantification: Achieved a validation $r = 0.997$ on ground-truth human-mouse DNA mixtures.
 - Retrospective Analysis: Quantify contamination in existing datasets where physical samples are no longer accessible.
 - Validated on Real-World Data: Performance confirmed across 227 publicly available samples from the Gene Expression Omnibus (GEO).
 
@@ -80,3 +80,12 @@ source("plots/plot_GEO_data.R")
 ```
 
 All intermediate data frames and final PDF figures will be saved automatically to a newly created out/ directory.
+
+### Generate the Ground Truth Validation Figure
+
+To generate the validation figure using the ground-truth human-mouse DNA mixture dataset (E-MTAB-16743), run:
+```R
+source("plots/plot_ground_truth.R")
+```
+
+This script downloads ~250 MB of raw IDAT data and generates a validation plot showing the correlation between known mixture percentages and XenoMix predictions ($r = 0.997$). The plot is saved to `out/ground_truth_validation.pdf`.

@@ -16,10 +16,10 @@ Description: Quantifies murine DNA contamination in human Infinium
     accurately estimate the reciprocal case of host contamination in
     human-targeted xenograft samples. Validation against in-house
     ground-truth mixtures and 227 publicly available datasets from the
-    Gene Expression Omnibus demonstrates high estimation accuracy ($R^2 =
-    0.991$), providing a robust quality-control metric for preclinical
+    Gene Expression Omnibus demonstrates high estimation accuracy ($r =
+    0.997$), providing a robust quality-control metric for preclinical
     xenograft epigenomics.
-License: GPL (>= 3)
+License: GPL (>= 3) + file LICENSE
 Depends: 
     R (>= 4.1.0)
 Imports: 
@@ -31,4 +31,4 @@ Imports:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
+Config/roxygen2/version: 8.0.0

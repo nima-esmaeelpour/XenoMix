@@ -1,8 +1,15 @@
-# --- Configuration ---
+# ---- SETUP ----
 OUT_PATH <- "out"
 
-# --- Helper Function ---
-process_gse_report <- function(gse_id, platform_idx, platform_name, s_type, t_type, c_line) {
+# ---- HELPER FUNCTION ----
+process_gse_report <- function(
+  gse_id,
+  platform_idx,
+  platform_name,
+  s_type,
+  t_type,
+  c_line
+) {
   file_name <- sprintf("xeno_report_%s_%d.csv", gse_id, platform_idx)
   file_path <- file.path(OUT_PATH, file_name)
 
@@ -12,14 +19,14 @@ process_gse_report <- function(gse_id, platform_idx, platform_name, s_type, t_ty
     return(NULL)
   }
 
-  read.csv(file_path) %>%
+  read.csv(file_path) |>
     dplyr::mutate(
       gse = gse_id,
       platform = platform_name,
       sample_type = s_type,
       tumor_type = t_type,
       cell_line = c_line
-    ) %>%
+    ) |>
     dplyr::select(
       geo_accession,
       gse,
@@ -27,8 +34,13 @@ process_gse_report <- function(gse_id, platform_idx, platform_name, s_type, t_ty
       sample_type,
       tumor_type,
       cell_line,
-      background_signal,
+      probes_used,
       mouse_signal,
+      sem_mouse_signal,
+      mad_mouse_signal,
+      background_signal,
+      sem_background,
+      mad_background,
       mouse_fraction
     )
 }
@@ -41,7 +53,14 @@ results_list <- list(
     1,
     "EPICv1",
     "human",
-    c("LCL", "CML", "Prostate", rep("LCL", 6), rep("control", 7), rep("CRC", 2)),
+    c(
+      "LCL",
+      "CML",
+      "Prostate",
+      rep("LCL", 6),
+      rep("control", 7),
+      rep("CRC", 2)
+    ),
     read.csv(file.path(OUT_PATH, "xeno_report_GSE228820_1.csv"))$cell.line.ch1
   ),
 
@@ -71,8 +90,21 @@ results_list <- list(
     1,
     "EPICv2",
     c(rep("human", 32), rep("PDX", 8)),
-    c(rep("control", 3), rep("Prostate", 13), rep("Breast", 8), rep("Prostate", 8), rep("Breast", 8)),
-    sub(" cells$", "", read.csv(file.path(OUT_PATH, "xeno_report_GSE240469_1.csv"))$source_name_ch1)
+    c(
+      rep("control", 3),
+      rep("Prostate", 13),
+      rep("Breast", 8),
+      rep("Prostate", 8),
+      rep("Breast", 8)
+    ),
+    sub(
+      " cells$",
+      "",
+      read.csv(file.path(
+        OUT_PATH,
+        "xeno_report_GSE240469_1.csv"
+      ))$source_name_ch1
+    )
   ),
 
   # GSE273176
@@ -89,7 +121,14 @@ results_list <- list(
   process_gse_report("GSE308997", 1, "EPICv1", "PDX", "AML", "AML PDX"),
 
   # GSE289988
-  process_gse_report("GSE289988", 1, "EPICv1", c("human", "PDX", rep("human", 7)), "LBCL", c("LBCL", "LBCL PDX", rep("LBCL", 7))),
+  process_gse_report(
+    "GSE289988",
+    1,
+    "EPICv1",
+    c("human", "PDX", rep("human", 7)),
+    "LBCL",
+    c("LBCL", "LBCL PDX", rep("LBCL", 7))
+  ),
 
   # GSE165050
   process_gse_report(
@@ -108,7 +147,11 @@ results_list <- list(
     "EPICv1",
     c(rep("human", 9), rep("PDX", 30)),
     "Glioma",
-    sub("_.*", "", read.csv(file.path(OUT_PATH, "xeno_report_GSE271621_1.csv"))$title)
+    sub(
+      "_.*",
+      "",
+      read.csv(file.path(OUT_PATH, "xeno_report_GSE271621_1.csv"))$title
+    )
   ),
 
   process_gse_report(
@@ -117,7 +160,11 @@ results_list <- list(
     "EPICv2",
     c(rep("PDX", 4), rep("human", 2)),
     "Glioma",
-    sub("_.*", "", read.csv(file.path(OUT_PATH, "xeno_report_GSE271621_2.csv"))$title)
+    sub(
+      "_.*",
+      "",
+      read.csv(file.path(OUT_PATH, "xeno_report_GSE271621_2.csv"))$title
+    )
   ),
 
   # GSE240412
@@ -126,19 +173,41 @@ results_list <- list(
     1,
     "EPICv1",
     c(rep("human", 10), rep("PDX", 8)),
-    c("control", rep("Prostate", 5), rep("Breast", 2), rep("Prostate", 2), rep("Breast", 8)),
-    sub("_.*", "", read.csv(file.path(OUT_PATH, "xeno_report_GSE240412_1.csv"))$title)
+    c(
+      "control",
+      rep("Prostate", 5),
+      rep("Breast", 2),
+      rep("Prostate", 2),
+      rep("Breast", 8)
+    ),
+    sub(
+      "_.*",
+      "",
+      read.csv(file.path(OUT_PATH, "xeno_report_GSE240412_1.csv"))$title
+    )
   ),
 
   # GSE227695
-  process_gse_report("GSE227695", 1, "EPICv1", c(rep("PDX", 7), "human"), "Prostate", c(rep("LuCaP", 7), "MSKCC EF1"))
+  process_gse_report(
+    "GSE227695",
+    1,
+    "EPICv1",
+    c(rep("PDX", 7), "human"),
+    "Prostate",
+    c(rep("LuCaP", 7), "MSKCC EF1")
+  )
 )
 
 # --- Final Merge ---
 # Filter out any NULLs from missing files and bind into one DF
-final_report <- results_list %>%
-  purrr::compact() %>%
-  dplyr::bind_rows()
+final_report <- results_list |>
+  purrr::compact() |>
+  dplyr::bind_rows() %>%
+  mutate(across(tail(names(.), 7), ~ .x * 100))
 
 # Save final result
-write.csv(final_report, file.path(OUT_PATH, "xeno_report.csv"), row.names = FALSE)
+write.csv(
+  final_report,
+  file.path(OUT_PATH, "xeno_report.csv"),
+  row.names = FALSE
+)
