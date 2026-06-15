@@ -41,11 +41,12 @@ devtools::install_gitlab("b370/scepigen/XenoMix", host="git.dkfz.de")
 # Quick Start
 ```R
 library(XenoMix)
-# Load your raw IDAT files
-idat_path <- "path/to/idat/files"
 
-# Run the contamination estimate
-xeno_report <- run_xeno(idat_path)
+# Run the contamination estimate on a directory of IDAT files
+xeno_report <- run_xeno("path/to/idat/files")
+
+# Speed up reading by using multiple cores
+xeno_report <- run_xeno("path/to/idat/files", n_cores = 4)
 
 # View the results (predicted mouse fraction)
 print(xeno_report)

@@ -195,6 +195,31 @@ results_list <- list(
     c(rep("PDX", 7), "human"),
     "Prostate",
     c(rep("LuCaP", 7), "MSKCC EF1")
+  ),
+
+  # GSE81438
+  process_gse_report(
+    "GSE81438",
+    1,
+    "450k",
+    c(
+      "human",
+      rep("PDX", 3),
+      "human",
+      rep("PDX", 3),
+      "human",
+      rep("PDX", 11),
+      rep("human", 2)
+    ),
+    "Ovarian",
+    sub(
+      ".*:",
+      "",
+      read.csv(file.path(
+        OUT_PATH,
+        "xeno_report_GSE81438_1.csv"
+      ))$source_name_ch1
+    )
   )
 )
 
