@@ -1,5 +1,5 @@
 # XenoMix
-XenoMix is an R package designed to detect and quantify host (murine) DNA contamination in human patient-derived xenograft (PDX) samples profiled with Illumina Infinium Methylation arrays (EPIC and EPICv2).
+XenoMix is an R package designed to detect and quantify host (murine) DNA contamination in human patient-derived xenograft (PDX) samples profiled with Illumina Infinium Methylation arrays (450k, EPIC and EPICv2).
 
 ## Overview 
 A critical challenge in PDX research is the presence of murine-derived cells from the tumor microenvironment that are co-harvested with the human tumor fraction. XenoMix provides a robust *in silico* solution to estimate this contamination directly from raw methylation data without requiring additional laboratory work.
@@ -12,7 +12,7 @@ The technical capacity for cross-species detection using Infinium Type I probes 
 ## Key Features
 - Accurate Quantification: Achieved a validation $r = 0.997$ on ground-truth human-mouse DNA mixtures.
 - Retrospective Analysis: Quantify contamination in existing datasets where physical samples are no longer accessible.
-- Validated on Real-World Data: Performance confirmed across 227 publicly available samples from the Gene Expression Omnibus (GEO).
+- Validated on Real-World Data: Performance confirmed across 249 publicly available samples from the Gene Expression Omnibus (GEO).
 
 # Installation
 
