@@ -10,7 +10,7 @@ The algorithm identifies 15 inter-species informative probes from the Infinium T
 The technical capacity for cross-species detection using Infinium Type I probes was first described by [Zhou et al. (2022)](https://doi.org/10.1016/j.xgen.2022.100144) for human DNA on mouse-specific arrays. XenoMix establishes the first formalized framework and background-correction logic to address the reciprocal case of murine contamination on human targeted arrays.
 
 ## Key Features
-- Accurate Quantification: Achieved a validation $r = 0.997$ on ground-truth human-mouse DNA mixtures.
+- Accurate Quantification: Achieved a validation `r = 0.997` on ground-truth human-mouse DNA mixtures.
 - Retrospective Analysis: Quantify contamination in existing datasets where physical samples are no longer accessible.
 - Validated on Real-World Data: Performance confirmed across 249 publicly available samples from the Gene Expression Omnibus (GEO).
 
@@ -20,7 +20,7 @@ The technical capacity for cross-species detection using Infinium Type I probes 
 
 XenoMix requires the [sesame](https://www.bioconductor.org/packages/release/bioc/html/sesame.html) R package, which can be installed from Bioconductor:
 ```R
-# install.packages("BiocManager)
+# install.packages("BiocManager")
 BiocManager::install("sesame")
 ```
 

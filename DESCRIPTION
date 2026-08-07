@@ -15,9 +15,9 @@ Description: Quantifies murine DNA contamination in human Infinium
     first formalized framework and background-correction logic to
     accurately estimate the reciprocal case of host contamination in
     human-targeted xenograft samples. Validation against in-house
-    ground-truth mixtures and 227 publicly available datasets from the
-    Gene Expression Omnibus demonstrates high estimation accuracy ($r =
-    0.997$), providing a robust quality-control metric for preclinical
+    ground-truth mixtures and 249 publicly available datasets from the
+    Gene Expression Omnibus demonstrates high estimation accuracy (r =
+    0.997), providing a robust quality-control metric for preclinical
     xenograft epigenomics.
 License: GPL (>= 3) + file LICENSE
 Depends: 
