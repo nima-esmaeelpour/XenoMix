@@ -30,11 +30,13 @@ run_xeno <- function(idat_path, n_cores = 1) {
     stop("No .idat files found in: ", idat_path, call. = FALSE)
   }
 
+  bp <- BiocParallel::SnowParam(n_cores)
+
   message(sprintf("[STARTED] Reading %s directory...", idat_path))
   sdfs <- sesame::openSesame(
     idat_path,
     func = NULL,
-    BPPARAM = BiocParallel::MulticoreParam(n_cores)
+    BPPARAM = bp
   )
   message(sprintf("[FINISHED] Reading %s directory...", idat_path))
 
@@ -44,7 +46,11 @@ run_xeno <- function(idat_path, n_cores = 1) {
     sdfs <- list(sample = sdfs)
   }
 
-  results <- lapply(names(sdfs), \(nm) add_xeno(sdfs[[nm]], nm))
+  results <- BiocParallel::bplapply(
+    names(sdfs),
+    \(nm) add_xeno(sdfs[[nm]], nm),
+    BPPARAM = bp
+  )
 
   dplyr::bind_rows(results)
 }
