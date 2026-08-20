@@ -89,4 +89,4 @@ To generate the validation figure using the ground-truth human-mouse DNA mixture
 source("plots/plot_ground_truth.R")
 ```
 
-This script downloads ~250 MB of raw IDAT data and generates a validation plot showing the correlation between known mixture percentages and XenoMix predictions ($r = 0.997$). The plot is saved to `out/ground_truth_validation.pdf`.
+This script downloads ~250 MB of raw IDAT data and generates a validation plot showing the correlation between known mixture percentages and XenoMix predictions (`r = 0.997`). The plot is saved to `out/ground_truth_validation.pdf`.

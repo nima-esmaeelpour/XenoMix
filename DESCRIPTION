@@ -29,6 +29,7 @@ Imports:
     sesame,
     stats
 Encoding: UTF-8
+biocViews: DNAMethylation, Epigenetics, QualityControl, MicroArray
 LazyData: true
 Roxygen: list(markdown = TRUE)
 Config/roxygen2/version: 8.0.0
