@@ -4,7 +4,7 @@ library(XenoMix)
 test_dir <- "test_data_mouse"
 dir.create(test_dir, showWarnings = FALSE)
 
-# Temporary GitHub Link
+# EBI ArrayExpress link for the test IDAT pair
 base_url <- "https://ftp.ebi.ac.uk/pub/databases/biostudies/E-MTAB-/743/E-MTAB-16743/Files/"
 files <- c(
   "209344100104_R04C01_Grn.idat",

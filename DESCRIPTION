@@ -5,7 +5,7 @@ Version: 0.1.0
 Authors@R: 
     person("Nima", "Esmaeelpour", , "nima.esmaeelpour@dkfz.de", role = c("aut", "cre"))
 Description: Quantifies murine DNA contamination in human Infinium
-    Methylation EPIC arrays by exploiting species-specific signal
+    Methylation arrays (450k, EPIC, EPICv2) by exploiting species-specific signal
     discordance. Leveraging Infinium Type I probe biochemistry, the
     algorithm identifies inter-species informative probes where
     single-base extension color channels differ between human and mouse

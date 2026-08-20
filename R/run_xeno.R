@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Processes IDAT files from a specified directory to calculate xenograft
-#' (mouse) fraction. Automatically detects EPIC v1 vs v2 arrays.
+#' (mouse) fraction. Automatically detects 450k, EPIC v1, and v2 arrays.
 #'
 #' @param idat_path Character. Path to the directory containing .idat files.
 #' @param n_cores Integer. Number of cores for parallel processing (default is 1).

@@ -50,7 +50,7 @@ xeno_report <- run_xeno("path/to/idat/files", n_cores = 4)
 
 # View the results (predicted mouse fraction)
 print(xeno_report)
-````
+```
 
 # Verification with Test Dataset
 
@@ -72,7 +72,7 @@ The reproduction scripts require a few extra packages for data handling and visu
 ```R
 BiocManager::install(c("sesameData", "GEOquery", "Biobase"))
 install.packages(c("dplyr", "ggplot2", "stringr", "future", "future.apply", "R.utils", "purrr"))
-````
+```
 
 ### Run the Full Pipeline
 ```R
