@@ -80,8 +80,26 @@ add_xeno <- function(df, sample_name) {
   )
 }
 
-#' Adjust raw mouse signal by background, clamped to `[0, 1]`
-#' Returns 1 (worst case) when no interspecies probes are available.
+#' Adjust raw mouse signal by subtracting array-wide background
+#'
+#' Even in pure-human samples, Type I probes show a small baseline
+#' wrong-color fraction due to optical crosstalk and non-specific
+#' hybridisation.  This background is estimated as the median
+#' wrong-color fraction across all Type I probes and subtracted from
+#' the interspecies-probe signal.
+#'
+#' Background subtraction is applied only when the raw signal is below
+#' `LOW_SIGNAL_CUTOFF` (0.4).  Above that threshold the sample is
+#' heavily contaminated and the interspecies probes themselves
+#' dominate the array-wide median, so subtracting it would
+#' artificially deflate the estimate.
+#'
+#' Returns 1 (worst case) when no interspecies probes are available
+#' (i.e. `mouse_med` is `NA`), and clamps the result to `[0, 1]`.
+#'
+#' @param mouse_med Numeric. Median wrong-color fraction of interspecies probes.
+#' @param background Numeric. Median wrong-color fraction across all Type I probes.
+#' @return Numeric scalar — estimated mouse DNA fraction.
 #' @noRd
 compute_mouse_fraction <- function(mouse_med, background) {
   dplyr::case_when(
