@@ -44,12 +44,7 @@ run_xeno <- function(idat_path, n_cores = 1) {
     sdfs <- list(sample = sdfs)
   }
 
-  results <- vector("list", length(sdfs))
-  i <- 1
-  for (sample_name in names(sdfs)) {
-    results[[i]] <- add_xeno(sdfs[[sample_name]], sample_name)
-    i <- i + 1
-  }
+  results <- lapply(names(sdfs), \(nm) add_xeno(sdfs[[nm]], nm))
 
   dplyr::bind_rows(results)
 }
